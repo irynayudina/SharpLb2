@@ -26,15 +26,7 @@ namespace lab2
             get { return birthday; }
             set { birthday = value; }
         }
-        //Additional unnecessary function
-        public int Age()
-        {
-            int bYear, nYear;
-            bYear = Birthday.Year;
-            nYear = DateTime.Today.Year;
-            //((DateTime.Today).Subtract(Birthday)).Days / 365
-            return (nYear - bYear);
-        }
+        
         public int ChangeBirthday
         {
             get { return Birthday.Year; }
@@ -143,7 +135,6 @@ namespace lab2
             Speciality = speciality;
             Form = form;
             LearningYear = learningYear;
-            Articles = new Article[0];
             this.articles = new Article[0];
         }
         public GraduateStudent()
@@ -153,14 +144,12 @@ namespace lab2
             Speciality = "Software engineering";
             Form = 0;
             LearningYear = 2024;
-            Articles = new Article[0];
             this.articles = new Article[0];
         }
         public void AddArticles(params Article[] p)
         {
             int initialLength = this.articles.Length;
             Array.Resize(ref this.articles, this.articles.Length + p.Length);
-            //p.CopyTo(this.articles, initialLength-1);
             for (int i = initialLength; i < this.articles.Length; i++)
             {
                 this.articles[i] = p[i - initialLength];
@@ -197,13 +186,17 @@ namespace lab2
             Console.WriteLine(@"\\\\\\\\\\\\\\Requirements common for all variants\\\\\\\\\\\\\\\\\"+"\n\n\n\n\n\n");
             int m, n;
             Console.WriteLine("Comparation of arrays of Persons");
-        A: Console.WriteLine(@"Enter m and n using following separators: ' ', ',', '.', ':', '\t'");
-            string inp = Console.ReadLine();
-            string[] mn = inp.Split(new Char[] { ' ', ',', '.', ':', '\t' });
-            while (mn.Length < 2)
+            int len = 0;
+            string inp = "";
+            string[] mn;
+            while (len < 2)
             {
-                goto A;
+                Console.WriteLine(@"Enter m and n using following separators: ' ', ',', '.', ':', '\t'");
+                inp = Console.ReadLine();
+                mn = inp.Split(new Char[] { ' ', ',', '.', ':', '\t' });
+                len = mn.Length;
             }
+            mn = inp.Split(new Char[] { ' ', ',', '.', ':', '\t' });
             m = EnterPositiveInt(mn[0]);
             n = EnterPositiveInt(mn[1]);
             Person[] arr1dimention = new Person[m * n];
@@ -287,7 +280,7 @@ namespace lab2
             Console.WriteLine("\n\n\nInitial value of Graduate student created, using constructor with parameters\n\n\n");
             GraduateStudent graduate = new GraduateStudent(new Person("Lydia", "Yud", new DateTime(1999, 02, 23)), new Person("Maxym", "Boyko", new DateTime(1989, 03, 24)), "Information technology", (FormOfStudy)1, 2026);
             Console.WriteLine(graduate.ToString());
-            graduate.AddArticles(new Article(),
+            graduate.AddArticles(
                 new Article("Information technology of evaluation and improvement the quality of cluster analysis", "Lviv Polytechnic Publishing House", new DateTime(2012, 08, 24)),
                 new Article("Information technology for the analysis of the dynamics of the reaction rate of the operator", "Lviv Polytechnic Publishing House", new DateTime(2014, 07, 19)),
                 new Article("article 1", "place 1", new DateTime(2009, 03, 07)),
@@ -328,13 +321,17 @@ namespace lab2
 
             int m1, n1;
             Console.WriteLine("Comparation of arrays of Articles");
-        B: Console.WriteLine(@"Enter m and n using following separators: ' ', ',', '.', ':', '\t'");
-            string inp1 = Console.ReadLine();
-            string[] mn1 = inp1.Split(new Char[] { ' ', ',', '.', ':', '\t' });
-            while (mn1.Length < 2)
+            int len1 = 0;
+            string inp1 = "";
+            string[] mn1;
+            while (len1 <2)
             {
-                goto B;
+                Console.WriteLine(@"Enter m and n using following separators: ' ', ',', '.', ':', '\t'");
+                inp1 = Console.ReadLine();
+                mn1 = inp1.Split(new Char[] { ' ', ',', '.', ':', '\t' });
+                len1 = mn1.Length;
             }
+            mn1 = inp1.Split(new Char[] { ' ', ',', '.', ':', '\t' });
             m1 = EnterPositiveInt(mn1[0]);
             n1 = EnterPositiveInt(mn1[1]);
             Article[] arr1dimentiona = new Article[m1 * n1];
