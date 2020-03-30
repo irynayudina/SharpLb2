@@ -383,7 +383,7 @@ namespace lab2
             stopWatch1.Stop();
             TimeSpan ts2da = stopWatch1.Elapsed;
             stopWatch1.Start();
-            for (int i = 0; i < m; i++)
+            for (int i = 0; i < m1; i++)
             {
                 for (int k = 0; k < arrSteppeda[i].Length; k++)
                 {
