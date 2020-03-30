@@ -30,6 +30,7 @@ namespace lab2
         public int ChangeBirthday
         {
             get { return Birthday.Year; }
+           
             set { Birthday = new DateTime(value, Birthday.Month, Birthday.Day); }
         }
         public Person(string name, string lastName, DateTime birthday)
@@ -44,7 +45,7 @@ namespace lab2
             LastName = "Yudina";
             Birthday = new DateTime(2001, 01, 27);
         }
-        override public string ToString()
+        public override string ToString()
         {
             return ($"\nInformation about subject:\n Name: {Name}\n Last Name: {LastName}\n" +
                 $" Date of birthday: {Birthday}\n");
@@ -135,7 +136,8 @@ namespace lab2
             Speciality = speciality;
             Form = form;
             LearningYear = learningYear;
-            this.articles = new Article[0];
+            Articles = new Article[0];
+           // this.articles = new Article[0];
         }
         public GraduateStudent()
         {
@@ -144,7 +146,8 @@ namespace lab2
             Speciality = "Software engineering";
             Form = 0;
             LearningYear = 2024;
-            this.articles = new Article[0];
+            Articles = new Article[0];
+            //this.articles = new Article[0];
         }
         public void AddArticles(params Article[] p)
         {
@@ -204,12 +207,12 @@ namespace lab2
             Person[][] arrStepped = new Person[m][];
             Create2dstepped(m, n, arrStepped);
             int sssssum = 0;///testing sum of all elements of stepped array
-            for (int i = 0; i < m; i++)
+            /*for (int i = 0; i < m; i++)
             {
                 Console.WriteLine($"Stepped[{i}][] = new Stepped[{arrStepped[i].Length}]");
                 sssssum += arrStepped[i].Length;
-            }
-            Console.WriteLine($"Sum of elements of stepped array = { sssssum}");
+            }*/
+            //Console.WriteLine($"Sum of elements of stepped array = { sssssum}");
             for (int i = 0; i < arr1dimention.Length; i++)
             {
                 arr1dimention[i] = new Person();
